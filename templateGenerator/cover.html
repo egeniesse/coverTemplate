@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Cover Letter Template</title>
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
+</head>
+<body>
+	<div ng-app = "coverTemplate">
+		<div ng-controller="updateForm" layout="column" ng-cloak>
+		  <md-content class="md-padding">
+		  	<div style = 'width:700px;margin:auto;'>
+		      <p id = 'name'>Eric Geniesse</p>
+		      <p id = 'city'>San Mateo, CA</p>
+		      <p id = 'phoneNumber'>(650) 384-1050</p>
+		      <p id = 'email'>egeniesse@gmail.com</p><br>
+
+		      <p id = 'date'>{{date}}</p><br>
+
+		      <p id = 'intro'>To Whom It May Concern,</p><br> 
+
+		      <p id = 'paragraphOne'>I am really excited for the opportunity to work at {{company}} as a {{stack}} developer. I am thrilled to join the team and {{reasonToWork}}.</p><br>
+
+		      <p id = 'paragraphTwo'>I would be an asset to the team because I have a deep understanding of the Javascript language as well as practical experience architecting systems using {{applicableFramework}} on the client side with a Node.js server using Express for RESTful API endpoints. While creating {{firstAppDescription}}, I {{descriptionOfWorkOnAppOne}}. Additionally, I used {{descriptionOfWorkOnAppTwo}} to {{secondAppDescription}}.</p><br>
+
+		      <p id = 'paragraphThree'>I believe my experience and passion make me the perfect candidate for the position. I am eager to learn more about the company and further discuss the value I can offer to the growth of {{company}}. I look forward to hearing from you soon.</p><br>
+
+		      <p id = 'regards'>Kind Regards, </p><br>
+
+		      <p>Eric Geniesse</p>
+		    </div>
+		    <md-button ng-click="submitCoverLetter()" class="md-raised">Create Cover Letter</md-button>
+		  <md-content layout-padding>
+		    <div>
+		      <form name="userForm">
+		        <div layout-gt-sm="column">
+				      <md-input-container>
+				        <label>Company Name</label>
+				        <input ng-model="company">
+				      </md-input-container>
+				      <md-input-container class="md-block" flex-gt-sm>
+				        <label>Desired stack</label>
+				        <input ng-model="stack">
+				      </md-input-container>
+		          <md-input-container class="md-block" flex-gt-sm>
+		            <label>Reason why I think the company is so cool</label>
+		            <input ng-model="reasonToWork">
+		          </md-input-container>
+		          <md-input-container class="md-block" flex-gt-sm>
+		            <label>Applicable framework I worked with</label>
+		            <input ng-model="applicableFramework">
+		          </md-input-container>
+		          <md-input-container class="md-block" flex-gt-sm>
+		            <label>First App Description</label>
+		            <input ng-model="firstAppDescription">
+		          </md-input-container>
+		          <md-input-container class="md-block" flex-gt-sm>
+		            <label>Description Of Work On App One</label>
+		            <input ng-model="descriptionOfWorkOnAppOne">
+		          </md-input-container>
+		          <md-input-container class="md-block" flex-gt-sm>
+		            <label>Description Of Work On App Two</label>
+		            <input ng-model="descriptionOfWorkOnAppTwo">
+		          </md-input-container>
+		          <md-input-container class="md-block" flex-gt-sm>
+		            <label>Second App Description</label>
+		            <input ng-model="secondAppDescription">
+		          </md-input-container>
+		        </div>
+		      </form>
+		    </div>
+		  </md-content>
+		</div>
+	</div>
+<script type="text/javascript" src= "bower_components/angular/angular.js"></script>
+<script type="text/javascript" src= "bower_components/angular-material/angular-material.js"></script>
+<script type="text/javascript" src= "bower_components/angular-messages/angular-messages.js"></script>
+<script type="text/javascript" src= "bower_components/angular-animate/angular-animate.js"></script>
+<script type="text/javascript" src= "bower_components/angular-aria/angular-aria.js"></script>
+<script type="text/javascript" src= "bower_components/angular-material/angular-material.js"></script>
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="coverModule.js"></script>
+
+</body>
+</html>
