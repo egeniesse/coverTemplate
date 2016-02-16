@@ -14,7 +14,37 @@ angular.module('coverTemplate', ['ngMaterial'])
     $scope.secondApp = 'applicable technology';
     $scope.applicableFramework = 'insert applicable framework here';
     $scope.reasonToWork = 'help improve countless lives of potential users by growing your company and making it better'
+    var fullStack = $('#paragraphTwo');
+    var frontEnd = $('#paragraphTwoFront');
+    var backEnd = $('#paragraphTwoBack');
+
+    $scope.$watch('stack', function(value) {
+      if($scope.stack === 'full stack'){
+        frontEnd.hide("slow");
+        backEnd.hide("slow");
+        fullStack.show("slow");
+      } else if ($scope.stack === 'back end'){
+        backEnd.show("slow");
+        frontEnd.hide("slow");
+        fullStack.hide("slow");
+      } else {
+        frontEnd.show("slow");
+        backEnd.hide("slow");
+        fullStack.hide("slow");
+      }
+     });
+
     $scope.submitCoverLetter = function(ev){
+
+      var paragraphTwo;
+      if($scope.stack === 'full stack'){
+        paragraphTwo = $('#paragraphTwo').text();
+      } else if ($scope.stack === 'back end'){
+        paragraphTwo = $('#paragraphTwoBack').text();
+      } else {
+        paragraphTwo = $('#paragraphTwoFront').text();
+      }
+
       var name = $('#name').text();
       var city = $('#city').text();
       var phoneNumber = $('#phoneNumber').text();
@@ -22,7 +52,6 @@ angular.module('coverTemplate', ['ngMaterial'])
       var date = $('#date').text();
       var intro = $('#intro').text();
       var paragraphOne = $('#paragraphOne').text();
-      var paragraphTwo = $('#paragraphTwo').text();
       var paragraphThree = $('#paragraphThree').text();
       var regards = $('#regards').text();
       var req = {
@@ -55,8 +84,8 @@ angular.module('coverTemplate', ['ngMaterial'])
                 parent: angular.element(document.body),
                 targetEvent: ev,
                 clickOutsideToClose:true
-              })
-        })
-    }
+              });
+        });
+    };
 
   })

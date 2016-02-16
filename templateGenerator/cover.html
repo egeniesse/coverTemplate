@@ -21,9 +21,13 @@
 
 		      <p id = 'paragraphOne'>I am really excited for the opportunity to work at {{company}} as a {{stack}} developer. I am thrilled to join the team and {{reasonToWork}}.</p><br>
 
-		      <p id = 'paragraphTwo'>I would be an asset to the team because I have a deep understanding of the Javascript language as well as practical experience architecting systems using {{applicableFramework}} on the client side with a Node.js server using Express for RESTful API endpoints. While creating {{firstAppDescription}}, I {{descriptionOfWorkOnAppOne}}. Additionally, I used {{descriptionOfWorkOnAppTwo}} to {{secondAppDescription}}.</p><br>
+		      <p id = 'paragraphTwo'>I would be an asset to the team because I have a deep understanding of the Javascript language as well as practical experience architecting applications using {{applicableFramework}} on the client side with a Node.js server using Express for RESTful API endpoints. While creating {{firstAppDescription}}, I {{descriptionOfWorkOnAppOne}}. Additionally, I used {{descriptionOfWorkOnAppTwo}} to {{secondAppDescription}}.</p>
 
-		      <p id = 'paragraphThree'>I believe my experience and passion make me the perfect candidate for the position. I am eager to learn more about the company and further discuss the value I can offer to the growth of {{company}}. I look forward to hearing from you soon.</p><br>
+		      <p id = 'paragraphTwoFront'>I would be an asset to the team because I have a deep understanding of the Javascript language as well as practical experience building applications using {{applicableFramework}}. While creating {{firstAppDescription}}, I {{descriptionOfWorkOnAppOne}}. Additionally, I used {{descriptionOfWorkOnAppTwo}} to {{secondAppDescription}}.</p>
+
+		      <p id = 'paragraphTwoBack'>I would be an asset to the team because I have a deep understanding of the Javascript language as well as practical experience architecting applications using a Node.js server and Express for RESTful API endpoints. While creating {{firstAppDescription}}, I {{descriptionOfWorkOnAppOne}}. Additionally, I used {{descriptionOfWorkOnAppTwo}} to {{secondAppDescription}}.</p>
+
+		      <br><p id = 'paragraphThree'>I believe my experience and passion make me the perfect candidate for the position. I am eager to learn more about the company and further discuss the value I can offer to the growth of {{company}}. I look forward to hearing from you soon.</p><br>
 
 		      <p id = 'regards'>Kind Regards, </p><br>
 
@@ -34,13 +38,14 @@
 		    <div>
 		      <form name="userForm">
 		        <div layout-gt-sm="column">
+      	    <md-radio-group ng-model="stack" ng-change='newValue(value)'>
+      	      <md-radio-button value="full stack" class="md-primary">Full stack</md-radio-button>
+      	      <md-radio-button value="front end">Front end</md-radio-button>
+      	      <md-radio-button value="back end">Back end</md-radio-button>
+      	    </md-radio-group>
 				      <md-input-container>
 				        <label>Company Name</label>
 				        <input ng-model="company">
-				      </md-input-container>
-				      <md-input-container class="md-block" flex-gt-sm>
-				        <label>Desired stack</label>
-				        <input ng-model="stack">
 				      </md-input-container>
 		          <md-input-container class="md-block" flex-gt-sm>
 		            <label>Reason why I think the company is so cool</label>

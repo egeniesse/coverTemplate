@@ -4,8 +4,7 @@ var bodyParser = require('body-parser');
 var path = require('path')
 var port = process.env.PORT || 3000;
 var fs = require("fs");
-var officegen = require('officegen');
-var docx = officegen ( 'docx' );
+
 
 
 
@@ -13,7 +12,11 @@ app.use(express.static(__dirname + '/../templateGenerator'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.post('*', function(req, res){
+
+	var officegen = require('officegen');
+	var docx = officegen ( 'docx' );
 	var content = req.body.data;
+
 	docx.on ( 'finalize', function ( written ) {
 				console.log ( 'Finish to create Word file.\nTotal bytes created: ' + written + '\n' );
 			});
@@ -51,14 +54,12 @@ app.post('*', function(req, res){
 	pObj.addLineBreak ();
 	pObj.addLineBreak ();
 	pObj.addText (content.name, { font_face: 'Helvetica Neue' });
-	docx.putPageBreak ();
-	console.log(req.body.companyName)
-	var out = fs.createWriteStream (path.join(__dirname + '/../../../coverLetters/' + req.body.companyName + '.docx'));
 
+	var companyName = req.body.companyName.split(' ').join('');
+	var out = fs.createWriteStream (path.join(__dirname + '/../../../coverLetters/' + companyName + '.docx'));
 	out.on('error',function(err){
 		console.log(err);
 	});
-
 	docx.generate(out);
 	res.sendStatus(200)
 });
