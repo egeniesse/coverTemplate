@@ -14,7 +14,7 @@ angular.module('coverTemplate', ['ngMaterial'])
     $scope.secondApp = 'applicable technology';
     $scope.applicableFramework = 'insert applicable framework here';
     $scope.reasonToWork = 'help improve countless lives of potential users by growing your company and making it better'
-    $scope.submitCoverLetter = function(){
+    $scope.submitCoverLetter = function(ev){
       var name = $('#name').text();
       var city = $('#city').text();
       var phoneNumber = $('#phoneNumber').text();
@@ -49,6 +49,13 @@ angular.module('coverTemplate', ['ngMaterial'])
       }
       $http(req)
         .then(function(err, res){
+          $mdDialog.show({
+                controller: "updateForm",
+                templateUrl: 'alert.html',
+                parent: angular.element(document.body),
+                targetEvent: ev,
+                clickOutsideToClose:true
+              })
         })
     }
 
