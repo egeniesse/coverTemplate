@@ -17,6 +17,7 @@ app.post('*', function(req, res){
 	var docx = officegen ( 'docx' );
 	var content = req.body.data;
 
+
 	docx.on ( 'finalize', function ( written ) {
 				console.log ( 'Finish to create Word file.\nTotal bytes created: ' + written + '\n' );
 			});
@@ -35,9 +36,24 @@ app.post('*', function(req, res){
 	pObj.addText (content.email, { font_face: 'Helvetica Neue' });
 	pObj.addLineBreak ();
 	pObj.addLineBreak ();
+	pObj.options.align = 'right';
+	var pObj = docx.createP ();
 	pObj.addText (content.date, { font_face: 'Helvetica Neue' });
 	pObj.addLineBreak ();
 	pObj.addLineBreak ();
+	if(content.fullName){
+		pObj.addText(content.fullName, { font_face: 'Helvetica Neue'});
+		pObj.addLineBreak ();
+		pObj.addText(content.title, { font_face: 'Helvetica Neue'});
+		pObj.addLineBreak ();
+		pObj.addText(req.body.companyName, { font_face: 'Helvetica Neue'});
+		pObj.addLineBreak ();
+		pObj.addText(content.address, { font_face: 'Helvetica Neue'});
+		pObj.addLineBreak ();
+		pObj.addText(content.cityState, { font_face: 'Helvetica Neue'});
+		pObj.addLineBreak ();
+		pObj.addLineBreak();
+	}
 	pObj.addText (content.intro, { font_face: 'Helvetica Neue' });
 	pObj.addLineBreak ();
 	pObj.addLineBreak ();
@@ -56,7 +72,8 @@ app.post('*', function(req, res){
 	pObj.addText (content.name, { font_face: 'Helvetica Neue' });
 
 	var companyName = req.body.companyName.split(' ').join('');
-	var out = fs.createWriteStream (path.join(__dirname + '/../../../coverLetters/' + companyName + '.docx'));
+	var stack = req.body.stack.split(' ')[0].toUpperCase();
+	var out = fs.createWriteStream (path.join(__dirname + '/../../../coverLetters/' + companyName + stack + '.docx'));
 	out.on('error',function(err){
 		console.log(err);
 	});
